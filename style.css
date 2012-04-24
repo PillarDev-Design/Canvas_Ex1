@@ -1,0 +1,14 @@
+/*********************************
+ * Style Sheet
+ ********************************/
+body{
+    margin:0px;
+    padding:0px;
+    text-align:center;
+}
+#main_canvas{
+    outline:0;
+    border:1px solid #000;
+    margin-left:auto;
+    margin-right:auto;
+}
