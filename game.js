@@ -68,9 +68,52 @@ var planet = new (function(){
     // Local Variables
     var that = this;
     that.image = new Image();
-    that.image.src = "a_terran_tileset.png";
+    that.image.src = "resources/a_terran_tileset.png";
     that.width = 150;
     that.height = 150;
+    that.frames = 149;
+    that.actualFrame = 0;
+    that.interval = 0;
+    that.X = 0;
+    that.Y = 0;
+    
+    that.setPosition = function(x,y){
+        that.X = x;
+        that.Y = y;
+    }
+
+    that.draw = function(){
+        try{
+            ctx.drawImage(that.image,
+                0,
+                that.height * that.actualFrame,
+                that.width,
+                that.height,
+                that.X,
+                that.Y,
+                that.width,
+                that.height);
+        }catch(e){
+        };
+        
+        if (that.interval === 3){
+            if (that.actualFrame === that.frames){
+                that.actualFrame = 0;
+            }else{
+                that.actualFrame++;
+            }
+            that.interval = 0;
+        }
+        that.interval++;
+    }
+})();
+var small_planet = new (function(){
+    // Local Variables
+    var that = this;
+    that.image = new Image();
+    that.image.src = "resources/a_terran_tileset_small.png";
+    that.width = 75;
+    that.height = 75;
     that.frames = 149;
     that.actualFrame = 0;
     that.interval = 0;
@@ -111,7 +154,8 @@ var planet = new (function(){
 //****************************************
 // Class Inits
 //****************************************
-planet.setPosition(~~((width-planet.width)/2),~~((height-planet.height)/2));
+planet.setPosition((~~((width-planet.width)/2)+150),~~(((height-planet.height)/2))+150);
+small_planet.setPosition((~~((width-small_planet.width)/2)-200),(~~((height-small_planet.height)/2))-200);
 
 //****************************************
 // Define game loop
@@ -122,6 +166,7 @@ var GameLoop = function(){
     draw_stars();
 
     planet.draw();
+    small_planet.draw();
 
     game_loop = setTimeout(GameLoop, 1000 / 50);
 };
