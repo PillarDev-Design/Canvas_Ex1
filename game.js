@@ -68,10 +68,10 @@ var planet = new (function(){
     // Local Variables
     var that = this;
     that.image = new Image();
-    that.image.src = "desert_planet.png";
-    that.width = 300;
-    that.height = 300;
-    that.frames = 15;
+    that.image.src = "a_terran_tileset.png";
+    that.width = 150;
+    that.height = 150;
+    that.frames = 149;
     that.actualFrame = 0;
     that.interval = 0;
     that.X = 0;
