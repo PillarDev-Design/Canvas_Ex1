@@ -1,4 +1,18 @@
 //****************************************
+// UTIL / Stubs
+//****************************************
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       || 
+          window.webkitRequestAnimationFrame || 
+          window.mozRequestAnimationFrame    || 
+          window.oRequestAnimationFrame      || 
+          window.msRequestAnimationFrame     || 
+          function(/* function */ callback, /* DOMElement */ element){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+//****************************************
 // Inits / Variable Declarations
 //****************************************
 var width = 800;
@@ -168,7 +182,11 @@ var GameLoop = function(){
     planet.draw();
     small_planet.draw();
 
-    game_loop = setTimeout(GameLoop, 1000 / 50);
+    //Old and busted
+    //game_loop = setTimeout(GameLoop, 1000 / 50);
+
+    //New and shiny
+    requestAnimFrame(GameLoop);
 };
 
 //****************************************
