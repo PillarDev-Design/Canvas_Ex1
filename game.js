@@ -75,6 +75,52 @@ var move_stars = function(e){
         }
     }
 };
+// Testing some random draw functions
+// What are the paramters in the ctx.arc?
+// ctx.arc(x coordinate,
+//         y coordinate,
+//         radius,
+//         startAngle (usually 0?),
+//         endAngle (using PI to calculate, usually),
+//         antiClockwise? (T/F));
+var happy_face = function(){
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.beginPath();
+    // Outer circle
+    ctx.arc(75,
+            75,
+            50,
+            0,
+            Math.PI*2,
+            true);
+    // Mouth (Clockwise)
+    ctx.moveTo(110, 75);
+    ctx.arc(75,
+            75,
+            35,
+            0,
+            Math.PI,
+            false);
+    // Left Eye
+    ctx.moveTo(65, 65);
+    ctx.arc(60,
+            65,
+            5,
+            0,
+            Math.PI*2,
+            true);
+    // Right Eye
+    ctx.moveTo(95,65);
+    ctx.arc(90,
+            65,
+            5,
+            0,
+            Math.PI*2,
+            true);
+    //ctx.closePath();
+    ctx.stroke();
+    //ctx.fill();
+};
 //****************************************
 // Planet Class Declaration
 //****************************************
@@ -178,6 +224,8 @@ var GameLoop = function(){
     clear();
     move_stars(2);
     draw_stars();
+
+    happy_face();
 
     planet.draw();
     small_planet.draw();
